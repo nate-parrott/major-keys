@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>major 🔑</title>
+	<script src='/static/base64.min.js'></script>
+	<script src='/static/generate.js'></script>
+	<meta property="og:image" content="IMAGE_URL" />
+	<meta property="og:title" content="this is a major 🔑" />
+	<meta property="og:type" content="website" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel='stylesheet' href='/static/shared.css'/>
+	<style>
+	body {
+		text-align: center;
+	}
+	#image {
+		height: 100%;
+	}
+	#controls {
+		position: absolute;
+		right: 0;
+		top: 0;
+		text-align: center;
+	}
+	#controls > a {
+		font-size: small;
+		display: block;
+		margin: 10px;
+		color: inherit;
+		text-decoration: none;
+	}
+	#controls img {
+		display: block;
+		margin: auto;
+		width: 115px;
+		border-radius: 17%;
+		border: 2px solid black;
+		box-sizing: border-box;
+	}
+	.button {
+		border: 2px solid black;
+		border-radius: 5px;
+		padding: 5px;
+		font-weight: bold;
+		width: 115px;
+		box-sizing: border-box;
+	}
+	@media screen and (max-width: 650px) {
+		#controls {
+			position: static;
+		}
+		#controls > a {
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#controls .button {
+			width: 70%;
+		}
+		#image {
+			height: 90%;
+		}
+	}
+	</style>
+</head>
+<body>
+	<img id='image' src='IMAGE_URL'/>
+	<div id='controls'>
+		<a class='button' href='javascript:another()'><div>Another one</div></a>
+		<a class='button' href='/'><div>Create your own</div></a>
+		<a href='http://nateparrott.com'><img src='/static/me.jpg'/>by nate parrott</a>
+		<a><img src='/static/dj.jpg'/> for DJ khaled</a>
+	</div>
+	
+	<script>
+	var payload = JSON.parse(Base64.decode(location.href.split('/_')[1].split('&')[0]));
+	var text = payload[1];	
+	function another() {
+		var url = generateURL(text);
+		location.href = url;
+	}
+	
+	</script>
+</body>
+</html>
